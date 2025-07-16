@@ -7,7 +7,8 @@ module.exports = function (eleventyConfig) {
 
   eleventyConfig.addPassthroughCopy({
     "node_modules/terminal.css/dist/terminal.min.css": "css/terminal.min.css",
-    "src/assets": "assets"
+    "src/assets": "assets",
+    "src/css": "css"
   });
 
 
