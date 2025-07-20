@@ -1,0 +1,131 @@
+:root {
+  --background-color: #000000;
+  --primary-color: #00FF00;
+  --text-color: #FFBF00;
+}
+
+body {
+  background-color: var(--background-color);
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  font-size: 1rem;
+  line-height: 1;
+}
+
+.contact-me {
+  margin: 0.5rem 0.5rem 0.5rem 0;
+  padding-left: 0;
+  line-height: 1.5;
+}
+
+.contact-me li a {
+  color: var(--text-color);
+}
+
+.terminal {
+  color: var(--text-color);
+}
+
+.main {
+  border: 2px solid var(--primary-color);
+  margin: 2rem;
+  box-sizing: border-box;
+  padding: 2rem;
+}
+
+.terminal-prompt {
+  color: var(--primary-color);
+  margin-bottom: 1rem;
+}
+
+.about-section div{
+  margin-top: 2rem;
+}
+
+nav ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+nav li {
+  font-size: 1.2rem;
+  margin-bottom: 0.5rem;
+  color: var(--primary-color);
+}
+
+nav a {
+  color: var(--primary-color);
+  text-decoration: none;
+}
+
+nav a:hover {
+  text-decoration: none;
+}
+
+.main-photo {
+  max-width: 100%;
+  width: 200px;
+  height: auto;
+  display: block;
+  border: 2px solid var(--primary-color);
+}
+
+.menu {
+  margin-top: 2rem;
+  border-top: 2px solid var(--primary-color);
+  border-bottom: 0;
+  border-left: 0;
+  border-right: 0;
+  padding-left: 10px;;
+}
+
+@media (max-width: 600px) {
+  body {
+    font-size: 0.95rem;
+  }
+  .main {
+    margin: 0.5rem;
+    padding: 1rem;
+    max-width: 100%;
+  }
+  .main-photo {
+    width: 100px;
+  }
+  .menu {
+    margin-top: 1rem;
+  }
+}
+
+@media (min-width: 601px) and (max-width: 1024px) {
+  body {
+    font-size: 1rem;
+  }
+  .main {
+    margin: 1rem;
+    padding: 1.5rem;
+    max-width: 700px;
+  }
+  .main-photo {
+    width: 150px;
+  }
+}
+
+@media (min-width: 1025px) {
+  body {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+  }
+  .main {
+    flex: 1 0 auto;
+  }
+  .menu {
+    margin-top: 0;
+    border-top: 2px solid var(--primary-color);
+    align-self: stretch;
+    min-height: 13vh;
+  }
+}

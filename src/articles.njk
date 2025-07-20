@@ -4,18 +4,20 @@ layout: layout.njk
 ---
 
 
-<section class="terminal-card">
-  <h1 class="terminal-prompt">
-    <strong>weekly.sh</strong>
-  </h1>
-  <p>Code, thoughts, and the best links on the Internet.</p>
+<div>
+  <h2 class="terminal-prompt">
+    <strong>ls ~/posts</strong>
+  </h2>
+  <p>The best dev links on the Internet every week.</p>
   <ul>
     {% for article in collections.articles %}
       <li>
-        <a href="{{ article.url }}">{{ article.date | date("yyyy-MM-dd") }} / {{ article.data.title }}</a>
+        <a href="{{ article.url }}">
+          [{{ loop.index0 }}] {{ article.data.title }}
+        </a>
       </li>
     {% else %}
       <li>No posts yet!</li>
     {% endfor %}
   </ul>
-</section>
+</div>
