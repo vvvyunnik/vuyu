@@ -18,6 +18,10 @@ body {
   line-height: 1;
 }
 
+body p {
+  line-height: 1.5;
+}
+
 .contact-me {
   margin: 0.5rem 0.5rem 0.5rem 0;
   padding-left: 0;
@@ -81,8 +85,12 @@ nav a:hover {
   position: fixed;
   left: 0;
   bottom: 0;
+  min-height: 10vh;
   width: 100%;
   background: var(--background-color);
+  border-left: 0;
+  border-right: 0;
+  border-bottom: 0;
   border-top: 2px solid var(--primary-color);
   min-height: 10vh;
   z-index: 1000;

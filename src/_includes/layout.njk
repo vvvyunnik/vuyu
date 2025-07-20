@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>{{ title }}</title>
+  <title>{{ title }} - vuyu.dev</title>
   <link rel="icon" href="/assets/favicon.png" type="image/png" />
   <link rel="stylesheet" href="/css/terminal.min.css" />
   <link rel="stylesheet" href="/css/main.css" />
@@ -16,9 +16,9 @@
 <div class="terminal-card menu">
     <nav>
       <ul>
-        {% if page.url != '/index/' and page.url != '/' %}
+        {% if page.url != '/' %}
           <li>
-            <a href="{{ '/index/' | url }}">vuyu.dev</a>
+            <a href="{{ '/' }}">about me</a>
           </li>
         {% endif %}
         {% if page.url != '/articles/' %}
