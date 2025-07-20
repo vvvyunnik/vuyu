@@ -6,8 +6,8 @@
   "author": "Vadzim Uyunnik <vuyu.dev@gmail.com>",
   "license": "MIT",
   "scripts": {
-    "build": "eleventy",
-    "run": "npx eleventy --serve"
+    "build": "eleventy --config=src/eleventy.js",
+    "run": "eleventy --serve --config=src/eleventy.js"
   },
   "dependencies": {
     "@11ty/eleventy": "^3.1.2",
