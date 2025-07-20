@@ -4,7 +4,8 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>{{ title }} - vuyu.dev</title>
-  <link rel="icon" href="/assets/favicon.png" type="image/png" />
+  <link rel="icon" href="/favicon.ico?v=1" type="image/x-icon" />
+  <link rel="shortcut icon" href="/favicon.ico?v=1" type="image/x-icon" />
   <link rel="stylesheet" href="/css/terminal.min.css" />
   <link rel="stylesheet" href="/css/main.css" />
 </head>
@@ -12,38 +13,36 @@
   <main class="main">
     {{ content | safe }}
   </main>
-
-<div class="terminal-card menu">
-    <nav>
-      <ul>
-        {% if page.url != '/' %}
-          <li>
-            <a href="{{ '/' }}">about me</a>
-          </li>
-        {% endif %}
-        {% if page.url != '/articles/' %}
-          <li>
-            <a href="{{ '/articles/' | url }}">> ls ~/posts</a>
-          </li>
-          {% if collections.articles and collections.articles.length %}
-            {% for article in collections.articles %}
-              {% if article.url != page.url %}
-                <li>
-                  <a href="{{ article.url }}">
-                    [{{ loop.index0 }}] {{ article.data.title }}
-                  </a>
-                </li>
-              {% endif %}
-            {% endfor %}
-          {% if collections.articles | length == 1 and page.url != '/articles/' %}
+  <div class="terminal-card menu">
+      <nav>
+        <ul>
+          {% if page.url != '/' %}
+            <li>
+              <a href="{{ '/' }}">about me</a>
+            </li>
           {% endif %}
-          {% else %}
-            <li><span>No articles yet!</span></li>
+          {% if page.url != '/articles/' %}
+            <li>
+              <a href="{{ '/articles/' | url }}">> ls ~/posts</a>
+            </li>
+            {% if collections.articles and collections.articles.length %}
+              {% for article in collections.articles %}
+                {% if article.url != page.url %}
+                  <li>
+                    <a href="{{ article.url }}">
+                      [{{ loop.index0 }}] {{ article.data.title }}
+                    </a>
+                  </li>
+                {% endif %}
+              {% endfor %}
+            {% if collections.articles | length == 1 and page.url != '/articles/' %}
+            {% endif %}
+            {% else %}
+              <li><span>No articles yet!</span></li>
+            {% endif %}
           {% endif %}
-        {% endif %}
-      </ul>
-    </nav>
-</div>
-
+        </ul>
+      </nav>
+  </div>
 </body>
 </html>

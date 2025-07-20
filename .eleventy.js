@@ -5,6 +5,8 @@ module.exports = function (eleventyConfig) {
     return DateTime.fromJSDate(dateObj, { zone: 'utc' }).toFormat(format);
   });
 
+  eleventyConfig.addPassthroughCopy({ "src/assets/favicon.ico": "favicon.ico" });
+
   eleventyConfig.addPassthroughCopy({
     "node_modules/terminal.css/dist/terminal.min.css": "css/terminal.min.css",
     "src/assets": "assets",
