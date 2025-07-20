@@ -4,6 +4,10 @@
   --text-color: #FFBF00;
 }
 
+html {
+  font-size: 16px;
+}
+
 body {
   background-color: var(--background-color);
   margin: 0;
@@ -30,9 +34,9 @@ body {
 
 .main {
   border: 2px solid var(--primary-color);
-  margin: 2rem;
-  box-sizing: border-box;
+  margin: 1rem;
   padding: 2rem;
+  padding-bottom: 12vh;
 }
 
 .terminal-prompt {
@@ -74,15 +78,22 @@ nav a:hover {
 }
 
 .menu {
-  margin-top: 2rem;
+  position: fixed;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  background: var(--background-color);
   border-top: 2px solid var(--primary-color);
-  border-bottom: 0;
-  border-left: 0;
-  border-right: 0;
-  padding-left: 10px;;
+  min-height: 10vh;
+  z-index: 1000;
+  padding-left: 10px;
+  align-self: stretch;
 }
 
 @media (max-width: 600px) {
+  html {
+    font-size: 14px;
+  }
   body {
     font-size: 0.95rem;
   }
@@ -94,12 +105,12 @@ nav a:hover {
   .main-photo {
     width: 100px;
   }
-  .menu {
-    margin-top: 1rem;
-  }
 }
 
 @media (min-width: 601px) and (max-width: 1024px) {
+  html {
+    font-size: 15px;
+  }
   body {
     font-size: 1rem;
   }
@@ -114,6 +125,9 @@ nav a:hover {
 }
 
 @media (min-width: 1025px) {
+  html {
+    font-size: 18px;
+  }
   body {
     min-height: 100vh;
     display: flex;
@@ -121,11 +135,5 @@ nav a:hover {
   }
   .main {
     flex: 1 0 auto;
-  }
-  .menu {
-    margin-top: 0;
-    border-top: 2px solid var(--primary-color);
-    align-self: stretch;
-    min-height: 13vh;
   }
 }
