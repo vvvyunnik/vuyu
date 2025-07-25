@@ -16,30 +16,25 @@
   <div class="terminal-card menu">
       <nav>
         <ul>
-          {% if page.url != '/' %}
-            <li>
-              <a href="{{ '/' }}">about me</a>
-            </li>
-          {% endif %}
-          {% if page.url != '/articles/' %}
-            <li>
-              <a href="{{ '/articles/' | url }}">> ls ~/posts</a>
-            </li>
-            {% if collections.articles and collections.articles.length %}
-              {% for article in collections.articles %}
-                {% if article.url != page.url %}
-                  <li>
-                    <a href="{{ article.url }}">
-                      [{{ loop.index0 }}] {{ article.data.title }}
-                    </a>
-                  </li>
-                {% endif %}
-              {% endfor %}
-            {% if collections.articles | length == 1 and page.url != '/articles/' %}
+          {% set navPages = collections.all | eleventyNavigation %}
+          {% for entry in navPages %}
+            {% if entry.url != page.url %}
+              <li>
+                <a href="{{ entry.url }}">{{ entry.title }}</a>
+              </li>
             {% endif %}
-            {% else %}
-              <li><span>No articles yet!</span></li>
-            {% endif %}
+          {% endfor %}
+
+          {% if collections.articles and collections.articles.length and page.url != '/articles/' %}
+            {% for article in collections.articles %}
+              {% if article.url != page.url %}
+                <li>
+                  <a href="{{ article.url }}">
+                    [{{ loop.index0 }}] {{ article.data.eleventyNavigation.title }}
+                  </a>
+                </li>
+              {% endif %}
+            {% endfor %}
           {% endif %}
         </ul>
       </nav>

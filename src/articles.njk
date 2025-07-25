@@ -1,6 +1,9 @@
 ---
-title: all posts
 layout: layout.njk
+eleventyNavigation:
+  key: Articles
+  title: all posts
+  order: 2
 ---
 
 
@@ -12,7 +15,7 @@ layout: layout.njk
     {% for article in collections.articles %}
       <li>
         <a href="{{ article.url }}">
-          [{{ loop.index0 }}] {{ article.data.title }}
+          [{{ loop.index0 }}] {{ article.data.eleventyNavigation.title }}
         </a>
       </li>
     {% else %}
