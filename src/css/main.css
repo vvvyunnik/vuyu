@@ -2,6 +2,7 @@
   --background-color: #000000;
   --primary-color: #00FF00;
   --text-color: #FFBF00;
+  --global-font-size: 1rem;
 }
 
 html {

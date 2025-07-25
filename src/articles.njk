@@ -9,13 +9,14 @@ eleventyNavigation:
 
 <div>
   <h2 class="terminal-prompt">
-    <strong>ls ~/posts</strong>
+    ls ~/posts
   </h2>
   <ul>
-    {% for article in collections.articles %}
+    {% set totalArticles = collections.articles.length %}
+    {% for article in collections.articles | sort(true, false, 'data.date') %}
       <li>
         <a href="{{ article.url }}">
-          [{{ loop.index0 }}] {{ article.data.title }}
+          [{{ totalArticles - loop.index0 - 1 }}] {{ article.data.title }}
         </a>
       </li>
     {% else %}

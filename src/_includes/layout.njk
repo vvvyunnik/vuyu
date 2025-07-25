@@ -24,17 +24,18 @@
               </li>
             {% endif %}
           {% endfor %}
+          {% if collections.articles | length %}
+            {% set sortedArticles = collections.articles | sort(true, false, 'data.date') %}
+            {% set latestArticle = sortedArticles[0] %}
+            {% set totalArticles = collections.articles.length %}
 
-          {% if collections.articles and collections.articles.length and page.url != '/articles/' %}
-            {% for article in collections.articles %}
-              {% if article.url != page.url %}
-                <li>
-                  <a href="{{ article.url }}">
-                    [{{ loop.index0 }}] {{ article.data.title }}
-                  </a>
-                </li>
-              {% endif %}
-            {% endfor %}
+            {% if page.url != latestArticle.url %}
+              <li>
+                <a href="{{ latestArticle.url }}">
+                  latest - [{{ totalArticles - 1 }}] {{ latestArticle.data.title }}
+                </a>
+              </li>
+            {% endif %}
           {% endif %}
         </ul>
       </nav>
