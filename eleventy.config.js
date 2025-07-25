@@ -1,6 +1,9 @@
 const { DateTime } = require("luxon");
+const navigationPlugin = require("@11ty/eleventy-navigation");
 
-module.exports = function (eleventyConfig) {
+module.exports = function(eleventyConfig) {
+  eleventyConfig.addPlugin(navigationPlugin);
+
   eleventyConfig.addFilter("date", (dateObj, format = "yyyy-MM-dd") => {
     return DateTime.fromJSDate(dateObj, { zone: 'utc' }).toFormat(format);
   });
@@ -9,10 +12,10 @@ module.exports = function (eleventyConfig) {
 
   eleventyConfig.addPassthroughCopy({
     "node_modules/terminal.css/dist/terminal.min.css": "css/terminal.min.css",
-    "src/assets": "assets",
-    "src/css": "css"
   });
 
+  eleventyConfig.addPassthroughCopy("src/assets");
+  eleventyConfig.addPassthroughCopy("src/css");
 
   eleventyConfig.addCollection("articles", api =>
     api.getFilteredByGlob("src/articles/*.md")
@@ -26,4 +29,4 @@ module.exports = function (eleventyConfig) {
       output: "_site"
     }
   };
-};
+}

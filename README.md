@@ -1,55 +1,56 @@
-# vuyu
+# Vuyu.dev Personal Website
 
-A lightweight static website built with Nunjucks templates and Terminal.CSS. Deployed to [vuyu.dev](https://www.vuyu.dev)
+A personal website built with Eleventy (11ty), featuring a clean terminal-like UI.
 
-## Table of Contents
-- [Getting Started](#getting-started)
-- [Project Structure](#project-structure)
+## Features
 
-## Getting Started
-
-### Prerequisites
-
-- [Node.js](https://nodejs.org/)
-- [Yarn](https://yarnpkg.com/)
-
-### Installation
-
-Clone the repository and install dependencies:
-
-```bash
-git clone https://github.com/yourusername/vuyu.git
-cd vuyu
-yarn install
-```
-
-### Build the Site
-
-To build the static site:
-
-```bash
-yarn build
-```
-
-The built site will be in the `_site/` directory.
-
-### Serve Locally
-
-To preview the site locally:
-
-```bash
-yarn run
-```
+- Modern Eleventy v3+ configuration with ESM syntax
+- Navigation system using @11ty/eleventy-navigation
+- Terminal.css for styling
+- Markdown-based articles with date formatting
+- Responsive design
 
 ## Project Structure
 
-```plaintext
-src/
-  _includes/      # Nunjucks layout and partial templates
-  articles/       # Markdown articles
-  assets/         # Images and other static assets
-  css/            # CSS stylesheets
-  index.njk       # Main index template
-  articles.njk    # Articles list template
-_site/            # Output directory for the built site
 ```
+vuyu/
+├── _site/                # Output folder (auto-generated)
+├── src/                  # Source files
+│   ├── _includes/        # Layout templates
+│   │   ├── article.njk   # Article template
+│   │   └── layout.njk    # Main layout template
+│   ├── articles/         # Article content
+│   ├── assets/           # Static assets
+│   └── css/              # Stylesheets
+├── eleventy.config.js    # Eleventy configuration
+└── package.json          # Project dependencies and scripts
+```
+
+## Getting Started
+
+1. Install dependencies:
+   ```
+   yarn install
+   ```
+
+2. Start the development server:
+   ```
+   yarn start
+   ```
+
+3. Build for production:
+   ```
+   yarn build
+   ```
+
+## Scripts
+
+- `yarn build` - Build the site for production
+- `yarn start` - Start development server with live reload
+- `yarn clean` - Remove the build directory
+
+## Technologies
+
+- [Eleventy (11ty)](https://www.11ty.dev/) - Static site generator
+- [Terminal.css](https://terminalcss.xyz/) - Terminal-style CSS framework
+- [Nunjucks](https://mozilla.github.io/nunjucks/) - Templating language
