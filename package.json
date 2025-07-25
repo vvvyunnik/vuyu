@@ -7,7 +7,7 @@
   "license": "MIT",
   "scripts": {
     "build": "eleventy",
-    "run": "eleventy --serve",
+    "start": "eleventy --serve",
     "clean": "rm -rf _site"
   },
   "dependencies": {
