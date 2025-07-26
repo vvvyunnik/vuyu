@@ -38,18 +38,21 @@ jobs:
         uses: actions/setup-node@v3
         with:
           node-version: '22'
+          cache: 'yarn'
+
+      - name: Install dependencies
+        run: yarn install
 
       - name: Install Vercel CLI
-        run: npm install -g vercel
+        run: yarn global add vercel@latest
 
       - name: Deploy to Vercel (Preview)
         run: |
           vercel --token ${{ secrets.VERCEL_TOKEN }} \
                  --scope ${{ secrets.VERCEL_SCOPE  }} \
                  --prod false \
-                 --yes \
-                 --confirm \
-                 --target preview
+                 --target preview \
+                 --yes
 
   deploy_prod:
     needs: test
@@ -62,14 +65,17 @@ jobs:
         uses: actions/setup-node@v3
         with:
           node-version: '22'
+          cache: 'yarn'
+
+      - name: Install dependencies
+        run: yarn install
 
       - name: Install Vercel CLI
-        run: npm install -g vercel
+        run: yarn global add vercel@latest
 
       - name: Deploy to Vercel (Production)
         run: |
           vercel --token ${{ secrets.VERCEL_TOKEN }} \
                  --scope ${{ secrets.VERCEL_SCOPE  }} \
                  --prod \
-                 --yes \
-                 --confirm
+                 --yes
