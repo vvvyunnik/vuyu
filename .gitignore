@@ -155,3 +155,4 @@ dist
 # and uncomment the following lines
 # .pnp.*
 _site/*
+.vercel

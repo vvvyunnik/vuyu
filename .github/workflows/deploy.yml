@@ -1,0 +1,81 @@
+name: deploy
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: '22'
+          cache: 'yarn'
+
+      - name: Install dependencies
+        run: yarn install
+
+      - name: Build site
+        run: yarn build
+
+      - name: Run tests
+        run: yarn test
+
+  deploy_preview:
+    needs: test
+    if: github.event_name == 'pull_request'
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: '22'
+          cache: 'yarn'
+
+      - name: Install dependencies
+        run: yarn install
+
+      - name: Install Vercel CLI
+        run: yarn global add vercel@latest
+
+      - name: Deploy to Vercel (Preview)
+        run: |
+          vercel --token ${{ secrets.VERCEL_TOKEN }} \
+                 --scope ${{ secrets.VERCEL_SCOPE  }} \
+                 --prod=false \
+                 --target preview \
+                 --yes
+
+  deploy_prod:
+    needs: test
+    if: github.ref == 'refs/heads/main' && github.event_name == 'push'
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: '22'
+          cache: 'yarn'
+
+      - name: Install dependencies
+        run: yarn install
+
+      - name: Install Vercel CLI
+        run: yarn global add vercel@latest
+
+      - name: Deploy to Vercel (Production)
+        run: |
+          vercel --token ${{ secrets.VERCEL_TOKEN }} \
+                 --scope ${{ secrets.VERCEL_SCOPE  }} \
+                 --prod \
+                 --yes
