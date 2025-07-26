@@ -10,7 +10,7 @@ jobs:
   test:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v3
+      - uses: actions/checkout@v4
 
       - name: Setup Node.js
         uses: actions/setup-node@v3
@@ -32,7 +32,7 @@ jobs:
     if: github.event_name == 'pull_request'
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v3
+      - uses: actions/checkout@v4
 
       - name: Setup Node.js
         uses: actions/setup-node@v3
@@ -59,7 +59,7 @@ jobs:
     if: github.ref == 'refs/heads/main' && github.event_name == 'push'
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v3
+      - uses: actions/checkout@v4
 
       - name: Setup Node.js
         uses: actions/setup-node@v3
@@ -70,6 +70,12 @@ jobs:
       - name: Install dependencies
         run: yarn install
 
+      - name: Bump version and push tag
+        id: tag_version
+        uses: mathieudutour/github-tag-action@v6.2
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+
       - name: Install Vercel CLI
         run: yarn global add vercel@latest
 
@@ -78,4 +84,5 @@ jobs:
           vercel --token ${{ secrets.VERCEL_TOKEN }} \
                  --scope ${{ secrets.VERCEL_SCOPE  }} \
                  --prod \
+                 --meta tag=${{ steps.tag_version.outputs.new_tag }} \
                  --yes
