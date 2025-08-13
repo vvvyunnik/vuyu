@@ -1,44 +1,44 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>{{ title }} - vuyu.dev</title>
-  <link rel="icon" href="/favicon.ico?v=1" type="image/x-icon" />
-  <link rel="shortcut icon" href="/favicon.ico?v=1" type="image/x-icon" />
-  <link rel="stylesheet" href="/css/terminal.min.css" />
-  <link rel="stylesheet" href="/css/main.css" />
-</head>
-<body class="terminal">
-  <main class="main">
-    {{ content | safe }}
-  </main>
-  <div class="terminal-card menu">
-      <nav>
-        <ul>
-          {% set navPages = collections.all | eleventyNavigation %}
-          {% for entry in navPages %}
-            {% if entry.url != page.url %}
-              <li>
-                <a href="{{ entry.url }}">{{ entry.title }}</a>
-              </li>
-            {% endif %}
-          {% endfor %}
-          {% if collections.articles | length %}
-            {% set sortedArticles = collections.articles | sort(true, false, 'data.date') %}
-            {% set latestArticle = sortedArticles[0] %}
-            {% set totalArticles = collections.articles.length %}
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>{{ title }} - vuyu.dev</title>
+    <link rel="icon" href="/favicon.ico?v=1" type="image/x-icon" />
+    <link rel="shortcut icon" href="/favicon.ico?v=1" type="image/x-icon" />
+    <link rel="stylesheet" href="/css/terminal.min.css" />
+    <link rel="stylesheet" href="/css/main.css" />
+  </head>
 
-            {% if page.url != latestArticle.url %}
-              <li>
-                <a href="{{ latestArticle.url }}">
-                  latest - [{{ totalArticles - 1 }}] {{ latestArticle.data.title }}
-                </a>
-              </li>
-            {% endif %}
-          {% endif %}
-        </ul>
-      </nav>
-  </div>
-</body>
+  <body class="terminal">
+    <nav class="breadcrumbs" aria-label="Breadcrumb">
+      {% set crumbs = collections.all | eleventyNavigationBreadcrumb(eleventyNavigation.key) %}
+      {% for crumb in crumbs %}
+        {% if not loop.first %}
+          <span class="breadcrumb-separator">/</span>
+        {% endif %}
+        <a href="{{ crumb.url }}" class="breadcrumb-link">{{ crumb.title }}</a>
+      {% endfor %}
+      {% if crumbs.length > 0 %}
+        <span class="breadcrumb-separator">/</span>
+      {% endif %}
+      <span class="breadcrumb-current">
+        {{ eleventyNavigation.title or title }}
+      </span>
+    </nav>
+    <main class="main">
+      {{ content | safe }}
+    </main>
+    {% if eleventyNavigation.key == "Index" %}
+      <div class="terminal-card menu">
+        <nav>
+          <ul>
+            <li>
+              <a href="/articles/">all posts</a>
+            </li>
+          </ul>
+        </nav>
+      </div>
+    {% endif %}
+  </body>
 </html>
