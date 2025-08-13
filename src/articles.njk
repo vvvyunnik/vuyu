@@ -16,7 +16,7 @@ eleventyNavigation:
     {% set totalArticles = collections.articles.length %}
     {% for article in collections.articles | sort(true, false, 'data.date') %}
       <li>
-        <a href="{{ article.url }}">
+        <a href="{{ article.url }}" class="article-link">
           [{{ totalArticles - loop.index0 - 1 }}] {{ article.data.title }}
         </a>
       </li>
