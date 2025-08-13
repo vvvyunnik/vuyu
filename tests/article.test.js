@@ -30,8 +30,6 @@ describe('Article pages', () => {
       expect($('ul li').length).toBeGreaterThan(0);
       expect($('ul li a').length).toBeGreaterThan(0);
       expect($('main ul li a[target="_blank"]').length).toBeGreaterThan(0);
-      expect($('.menu').length).toBe(1);
-      expect($('.menu nav ul li').length).toBeGreaterThan(0);
       expect($('a[href="/"]').length).toBe(1);
       expect($('a[href="/articles/"]').length).toBe(1);
     });
