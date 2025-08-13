@@ -39,7 +39,7 @@ body p {
 
 .main {
   border: 2px solid var(--primary-color);
-  margin: 1rem;
+  margin: 0.5rem 1rem 1rem 1rem;
   padding: 2rem;
   padding-bottom: 12vh;
 }
@@ -74,6 +74,30 @@ nav a:hover {
   text-decoration: none;
 }
 
+.breadcrumbs {
+  margin: 1rem 0 0.5rem 1rem;
+  font-size: 1rem;
+  color: var(--text-color);
+}
+
+.breadcrumb-link {
+  color: var(--primary-color);
+  text-decoration: none;
+}
+
+.breadcrumb-link:hover {
+  text-decoration: underline;
+}
+
+.breadcrumb-separator {
+  color: var(--text-color);
+}
+
+.breadcrumb-current {
+  color: var(--text-color);
+  font-weight: normal;
+}
+
 .main-photo {
   max-width: 100%;
   width: 12.5rem;
@@ -95,7 +119,8 @@ nav a:hover {
   border-top: 2px solid var(--primary-color);
   min-height: 10vh;
   z-index: 1000;
-  padding-left: 10px;
+  padding: 0.5rem 1rem;
+  margin: 0;
   align-self: stretch;
 }
 
@@ -111,8 +136,14 @@ nav a:hover {
     padding: 1rem;
     max-width: 100%;
   }
+  .breadcrumbs {
+    margin: 0.25rem 0.5rem;
+  }
   .main-photo {
-    width: 7.14rem;
+    width: 7rem;
+  }
+  .menu {
+    padding: 0.5rem 0.5rem;
   }
 }
 
@@ -130,6 +161,9 @@ nav a:hover {
   }
   .main-photo {
     width: 10rem;
+  }
+  .menu {
+    padding: 1rem 1.25rem;
   }
 }
 
