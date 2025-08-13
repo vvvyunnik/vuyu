@@ -172,6 +172,10 @@ nav a:hover {
   text-decoration: none;
 }
 
+.article-link:hover {
+  text-decoration: underline;
+}
+
 @media (min-width: 1025px) {
   html {
     font-size: 18px;
